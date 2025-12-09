@@ -1,0 +1,30 @@
+name: Build and Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to docker hub
+        uses: docker/login-action@v3
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_USERNAME }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            docker.io/ci-cd-final:latest
+            docker.io/ci-cd-final:${{ github.sha }}
+
