@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-ci-cd-demo
+  labels:
+    app: simple-ci-cd-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-ci-cd-demo
+  template:
+    metadata:
+      labels:
+        app: simple-ci-cd-demo
+    spec:
+      containers:
+        - name: app
+          image: docker.io/emoralesc/ci-cd-final:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
