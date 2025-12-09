@@ -23,6 +23,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./final-project-app/Dockerfile
           push: true
           tags: |
             docker.io/ci-cd-final:latest
