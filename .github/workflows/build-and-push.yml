@@ -26,6 +26,6 @@ jobs:
           file: ./final-project-app/Dockerfile
           push: true
           tags: |
-            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-final:latest
-            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-final:${{ github.sha }}
+            docker.io/${{ secrets.DOCKER_USERNAME }}/ci-cd-final:latest
+            docker.io/${{ secrets.DOCKER_USERNAME }}/ci-cd-final:${{ github.sha }}
 
